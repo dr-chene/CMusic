@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.playlist.PlayListFragment"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#fff7f8fa">-->
+
+<!--        <ImageView-->
+<!--            android:src="@mipmap/app_icon"-->
+<!--            android:layout_width="74dp"-->
+<!--            android:layout_height="74dp"-->
+<!--            android:layout_margin="16dp"/>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Ride the Lightning"-->
+<!--                android:textColor="#ff1c252a"-->
+<!--                android:textSize="15sp"-->
+<!--                android:gravity="bottom"/>-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Metallica"-->
+<!--                android:textColor="#ff0091ea"-->
+<!--                android:textSize="12sp" />-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="3">-->
+<!--                <ImageView-->
+<!--                    android:src="@mipmap/playlist_playlist"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginEnd="15dp"/>-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="8 Tracks - 1984"-->
+<!--                    android:textColor="#ff758692"-->
+<!--                    android:textSize="9sp"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginEnd="15dp"/>-->
+<!--                <ImageView-->
+<!--                    android:src="@mipmap/dots"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"/>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Songs"-->
+<!--            android:textColor="#ff1c252a"-->
+<!--            android:textSize="15sp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginStart="15dp"-->
+<!--            android:layout_marginBottom="10dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:layout_gravity="center_vertical|end"-->
+<!--            android:src="@mipmap/playlist_shaffle" />-->
+<!--    </FrameLayout>-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/playlist_rv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="1"/>-->
+
+</LinearLayout>

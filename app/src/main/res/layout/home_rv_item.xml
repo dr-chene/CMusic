@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/home_recommend_rv_item_cover_iv"
+        android:src="@mipmap/app_icon"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_margin="12dp" />
+    <TextView
+        android:id="@+id/home_recommend_rv_item_name_tv"
+        android:layout_marginStart="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Freewheelin'drhrdh"
+        android:textColor="#ff1c252a"
+        android:textSize="15sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        />
+    <TextView
+        android:id="@+id/home_recommend_rv_item_creator_tv"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bob Dylan"
+        android:textColor="#ff0091ea"
+        android:textSize="9sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        />
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+include ':app', ':chttp', ':cjson'
+rootProject.name='CMusic'
