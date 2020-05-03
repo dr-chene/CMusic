@@ -8,7 +8,7 @@ public class PlayList {
     private int trackCount;
     private String coverImgUrl;
     private String name;
-    private  long id;
+    private long id;
 
     public Creator getCreator() {
         return creator;

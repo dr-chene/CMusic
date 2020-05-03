@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +42,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         holder.orderNumber.setText(""+(position+1));
         holder.songName.setText(tracks.get(position).getName());
         holder.songTime.setText(getTime(tracks.get(position).getDt()));
+        holder.song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "play song", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -52,12 +60,14 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         TextView orderNumber;
         TextView songName;
         TextView songTime;
+        FrameLayout song;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             orderNumber = itemView.findViewById(R.id.playlist_order_number_tv);
             songName = itemView.findViewById(R.id.playlist_song_name_tv);
             songTime = itemView.findViewById(R.id.playlist_song_time_tv);
+            song = itemView.findViewById(R.id.play_list_play_item);
         }
     }
     private String getTime(int time) {

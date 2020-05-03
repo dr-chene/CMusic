@@ -7,14 +7,16 @@
     tools:context=".view.playlist.PlayListActivity"
     android:orientation="vertical">
     <Toolbar
+        android:id="@+id/playlist_toolbar"
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="36dp">
+        android:layout_height="36dp"
+        android:navigationIcon="@mipmap/arrow">
         <TextView
             android:text="Playlist"
             android:textColor="#ff1c252a"
             android:textSize="16sp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </Toolbar>

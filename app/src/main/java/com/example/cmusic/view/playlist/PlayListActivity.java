@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.chttp.CHttp;
 import com.example.chttp.CallBack;
@@ -36,6 +39,8 @@ public class PlayListActivity extends AppCompatActivity {
     private TextView tracks;
     private ImageView coverImg;
     private RecyclerView recyclerView;
+    private Toolbar toolbar;
+    private ImageView playOrder;
 
     public static final String TAG = "TAG3";
     private Handler handler = new Handler();
@@ -53,6 +58,20 @@ public class PlayListActivity extends AppCompatActivity {
         tracks = findViewById(R.id.playlist_activity_tracks_tv);
         coverImg = findViewById(R.id.playlist_activity_cover_img_iv);
         recyclerView = findViewById(R.id.playlist_activity_rv);
+        toolbar = findViewById(R.id.playlist_toolbar);
+        playOrder = findViewById(R.id.playlist_activity_play_order);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        playOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(PlayListActivity.this, "play order", Toast.LENGTH_SHORT).show();
+            }
+        });
         getSongs();
 //        设置封面
     }
