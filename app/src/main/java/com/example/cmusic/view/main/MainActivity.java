@@ -40,6 +40,7 @@ MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInte
     public static final String GET_RECOMMEND_ALBUM = baseUrl + "/top/playlist";
     public static final String GET_PLAYLIST_DETAIL = baseUrl + "/playlist/detail";
     public static final String GET_MY_SONG_LIST = baseUrl + "/user/playlist";
+    public static final String GET_USER_DETAIL = baseUrl + "/user/detail";
 
     private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override

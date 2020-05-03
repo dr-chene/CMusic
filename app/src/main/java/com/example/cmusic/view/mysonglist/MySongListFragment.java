@@ -52,7 +52,6 @@ public class MySongListFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private MySongList songList;
-    private Songs songs;
     private Handler handler = new Handler();
 
     public MySongListFragment() {
@@ -153,33 +152,38 @@ public class MySongListFragment extends Fragment {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        Request songRequest = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+songList.getPlaylist().get(0).getId());
-                        http.newCall(songRequest, new CallBack() {
-                            @Override
-                            public void onSuccess(String str) {
-                                List<Class> classes = new ArrayList<>();
-                                classes.add(Tracks.class);
-                                CJson songJson = new CJson(classes);
-                                songs = songJson.formJson(str,Songs.class);
-                                handler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Log.d("TAG2", "run: "+(songs == null));
-                                        Log.d("TAG2", "run: "+songs.getPlaylist().getTracks().get(0).getName());
-                                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                                        recyclerView.setLayoutManager(layoutManager);
-                                        MySongListAdapter adapter = new MySongListAdapter(getContext(),songs);
-                                        recyclerView.setAdapter(adapter);
-                                        adapter.notifyDataSetChanged();
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onFailed(Exception e) {
-
-                            }
-                        });
+//                        Request songRequest = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+songList.getPlaylist().get(0).getId());
+//                        http.newCall(songRequest, new CallBack() {
+//                            @Override
+//                            public void onSuccess(String str) {
+//                                List<Class> classes = new ArrayList<>();
+//                                classes.add(Tracks.class);
+//                                CJson songJson = new CJson(classes);
+//                                songs = songJson.formJson(str,Songs.class);
+//                                handler.post(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        Log.d("TAG2", "run: "+(songs == null));
+//                                        Log.d("TAG2", "run: "+songs.getPlaylist().getTracks().get(0).getName());
+//                                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+//                                        recyclerView.setLayoutManager(layoutManager);
+//                                        MySongListAdapter adapter = new MySongListAdapter(getContext(),songs);
+//                                        recyclerView.setAdapter(adapter);
+//                                        adapter.notifyDataSetChanged();
+//                                    }
+//                                });
+//                            }
+//
+//                            @Override
+//                            public void onFailed(Exception e) {
+//
+//                            }
+//                        });
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        MySongListAdapter adapter = new MySongListAdapter(getContext(),songList);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
                     }
                 });
             }

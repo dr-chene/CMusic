@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/my_center_bg"
-        android:src="@mipmap/app_icon"
+        android:background="@drawable/my_center_background"
         android:layout_width="match_parent"
-        android:layout_height="288dp"
+        android:layout_height="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/my_center_nickname_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Barbara Andrews"
@@ -103,7 +103,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/my_center_nickname_tv"
         app:layout_constraintVertical_bias="0.025">
 
         <ImageView
@@ -114,6 +114,7 @@
             android:src="@mipmap/pin" />
 
         <TextView
+            android:id="@+id/my_center_city_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Switzerland"
@@ -122,16 +123,16 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/my_center_followers_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2,5k"
         android:textColor="#ff323e46"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintBottom_toBottomOf="@+id/my_center_posts_tv"
+        app:layout_constraintEnd_toStartOf="@+id/my_center_posts_tv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/my_center_posts_tv" />
 
     <TextView
         android:id="@+id/textView10"
@@ -141,12 +142,12 @@
         android:textColor="#ffb7c4cb"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="@+id/my_center_followers_tv"
+        app:layout_constraintStart_toStartOf="@+id/my_center_followers_tv"
+        app:layout_constraintTop_toBottomOf="@+id/my_center_followers_tv"
         app:layout_constraintVertical_bias="0.2"/>
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/my_center_posts_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="486"
@@ -165,22 +166,22 @@
         android:textColor="#ffb7c4cb"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/my_center_posts_tv"
+        app:layout_constraintStart_toStartOf="@+id/my_center_posts_tv"
+        app:layout_constraintTop_toBottomOf="@+id/my_center_posts_tv"
         app:layout_constraintVertical_bias="0.2"/>
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/my_center_following_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1,4k"
         android:textColor="#ff323e46"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintBottom_toBottomOf="@+id/my_center_posts_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintStart_toEndOf="@+id/my_center_posts_tv"
+        app:layout_constraintTop_toTopOf="@+id/my_center_posts_tv" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -189,8 +190,8 @@
         android:textColor="#ffb7c4cb"
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="@+id/my_center_following_tv"
+        app:layout_constraintStart_toStartOf="@+id/my_center_following_tv"
+        app:layout_constraintTop_toBottomOf="@+id/my_center_following_tv"
         app:layout_constraintVertical_bias="0.2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

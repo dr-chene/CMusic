@@ -6,11 +6,21 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.chttp.CHttp;
+import com.example.chttp.CallBack;
+import com.example.chttp.Request;
+import com.example.cjson.CJson;
 import com.example.cmusic.R;
+import com.example.cmusic.view.main.MainActivity;
+
+import bean.mycenter.MyCenter;
+import bean.mycenter.Profile;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +41,14 @@ public class MyCenterFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private TextView nickname;
+    private TextView city;
+    private TextView followers;
+    private TextView posts;
+    private TextView following;
+    private MyCenter myCenter;
+    private Handler handler = new Handler();
 
     public MyCenterFragment() {
         // Required empty public constructor
@@ -67,8 +85,11 @@ public class MyCenterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_center, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_center, container, false);
+        initView(view);
+        return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -108,4 +129,40 @@ public class MyCenterFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private void initView(View view) {
+        nickname = view.findViewById(R.id.my_center_nickname_tv);
+        city = view.findViewById(R.id.my_center_city_tv);
+        followers = view.findViewById(R.id.my_center_followers_tv);
+        following = view.findViewById(R.id.my_center_following_tv);
+        posts = view.findViewById(R.id.my_center_posts_tv);
+
+        final CHttp http = CHttp.getChHttp();
+        Request request = new Request(MainActivity.GET_USER_DETAIL+"?uid=1351234965");
+        http.newCall(request, new CallBack() {
+            @Override
+            public void onSuccess(String str) {
+                CJson json = new CJson(null);
+                myCenter = json.formJson(str,MyCenter.class);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Profile profile = myCenter.getProfile();
+                        nickname.setText(profile.getNickname());
+                        city.setText(""+profile.getCity());
+                        followers.setText(""+profile.getFolloweds());
+                        posts.setText(""+profile.getPlaylistCount());
+                        following.setText(""+profile.getFollows());
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
+        http.execute();
+    }
+
 }

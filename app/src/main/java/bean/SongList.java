@@ -7,6 +7,15 @@ import java.util.List;
  */
 public class SongList {
     private List<Tracks> tracks;
+    private int trackCount;
+
+    public int getTrackCount() {
+        return trackCount;
+    }
+
+    public void setTrackCount(int trackCount) {
+        this.trackCount = trackCount;
+    }
 
     public List<Tracks> getTracks() {
         return tracks;

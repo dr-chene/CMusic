@@ -14,6 +14,7 @@ import com.example.cmusic.R;
 
 import java.util.List;
 
+import bean.SongList;
 import bean.Songs;
 import bean.Tracks;
 import bean.mysonglist.MySongList;
@@ -24,10 +25,10 @@ import bean.mysonglist.PlayList;
  */
 public class MySongListAdapter extends RecyclerView.Adapter<MySongListAdapter.ViewHolder> {
 
-    private Songs songs;
+    private MySongList songs;
     private Context context;
 
-    public MySongListAdapter(Context context,Songs songs) {
+    public MySongListAdapter(Context context, MySongList songs) {
         this.songs = songs;
         this.context = context;
     }
@@ -35,47 +36,33 @@ public class MySongListAdapter extends RecyclerView.Adapter<MySongListAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.playlist_rv_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.fragment_my_song_list_rv_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Tracks song = songs.getPlaylist().getTracks().get(position);
-        holder.orderNumber.setText(""+(position+1));
-        holder.songName.setText(song.getName());
-        Log.d("TAG1", "onBindViewHolder: "+song.getDt());
-        holder.songTime.setText(getTime(song.getDt()));
+        PlayList album = songs.getPlaylist().get(position);
+        holder.songsName.setText(album.getName());
+        holder.creatorName.setText(album.getCreator().getNickname());
+        Log.d("TAG1", "onBindViewHolder: ");
+        holder.track.setText(album.getTrackCount()+" Tracks - 2020");
     }
 
     @Override
     public int getItemCount() {
-        return songs == null?0:songs.getPlaylist().getTracks().size();
+        return songs == null?0:songs.getPlaylist().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orderNumber;
-        TextView songName;
-        TextView songTime;
+        TextView songsName;
+        TextView creatorName;
+        TextView track;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            orderNumber = itemView.findViewById(R.id.playlist_order_number_tv);
-            songName = itemView.findViewById(R.id.playlist_song_name_tv);
-            songTime = itemView.findViewById(R.id.playlist_song_time_tv);
+            songsName = itemView.findViewById(R.id.my_song_list_name_tv);
+            creatorName = itemView.findViewById(R.id.my_song_list_creator_name_tv);
+            track = itemView.findViewById(R.id.my_song_list_track_tv);
         }
-    }
-    private String getTime(int time) {
-        time /=1000;
-        int m = time/60;
-        int s = time-60*m;
-        String M;
-        if (m < 10) {
-            M = ""+0+m;
-        }else M = ""+m;
-        String S;
-        if (s < 10) {
-            S = "" +0+s;
-        }else S = ""+s;
-        return M + ":"+S;
     }
 }

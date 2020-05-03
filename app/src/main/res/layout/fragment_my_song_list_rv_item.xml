@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="@+id/my_song_list_album_iv" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/my_song_list_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Telluric"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.23" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/my_song_list_creator_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Matt Corby"
@@ -51,24 +51,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toEndOf="@+id/my_song_list_album_iv"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/my_song_list_name_tv"
         app:layout_constraintVertical_bias="0.18" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/playlist"
+        android:src="@mipmap/playlist_playlist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/my_song_list_album_iv"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/my_song_list_creator_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/my_song_list_creator_name_tv"
         app:layout_constraintVertical_bias="0.25"
         app:layout_constraintHorizontal_bias="0.0"/>
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/my_song_list_track_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11 Tracks - 2016"
@@ -85,8 +85,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/dots"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintBottom_toBottomOf="@+id/my_song_list_track_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toEndOf="@+id/my_song_list_track_tv"
+        app:layout_constraintTop_toTopOf="@+id/my_song_list_track_tv"
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

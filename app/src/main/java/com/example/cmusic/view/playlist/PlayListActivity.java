@@ -1,6 +1,8 @@
 package com.example.cmusic.view.playlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import bean.Songs;
 import bean.Tracks;
+import bean.mysonglist.PlayList;
 
 public class PlayListActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class PlayListActivity extends AppCompatActivity {
     private TextView nickname;
     private TextView tracks;
     private ImageView coverImg;
+    private RecyclerView recyclerView;
 
     public static final String TAG = "TAG3";
     private Handler handler = new Handler();
@@ -48,6 +52,7 @@ public class PlayListActivity extends AppCompatActivity {
         nickname = findViewById(R.id.playlist_activity_creator_name_tv);
         tracks = findViewById(R.id.playlist_activity_tracks_tv);
         coverImg = findViewById(R.id.playlist_activity_cover_img_iv);
+        recyclerView = findViewById(R.id.playlist_activity_rv);
         getSongs();
 //        设置封面
     }
@@ -60,7 +65,7 @@ public class PlayListActivity extends AppCompatActivity {
         nickname.setText(mNickname);
         songs = new Songs();
         CHttp http = CHttp.getChHttp();
-        Request request = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+id);
+        final Request request = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+id);
         http.newCall(request, new CallBack() {
             @Override
             public void onSuccess(String str) {
@@ -69,13 +74,18 @@ public class PlayListActivity extends AppCompatActivity {
                 CJson json = new CJson(clazz);
                 Log.d("TAG3", "run: "+ str);
                 songs = json.formJson(str,Songs.class);
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        String track = songs.getPlaylist().getTracks().size()+" Tracks - "+songs.getPlaylist().getTrackCount();
-//                        tracks.setText(track);
-//                    }
-//                });
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String track = songs.getPlaylist().getTracks().size()+" Tracks - "+songs.getPlaylist().getTrackCount();
+                        tracks.setText(track);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(PlayListActivity.this);
+                        recyclerView.setLayoutManager(layoutManager);
+                        PlayListAdapter adapter = new PlayListAdapter(songs.getPlaylist().getTracks(),PlayListActivity.this);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override
