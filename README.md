@@ -38,3 +38,8 @@ viewpager+radiogroup+fragment实现底部导航，滑动切换~~原本所有界�
 ~~**最后，劳动法很好看，我已经第三遍了（doge）**~~
 
 gif图如果时间充裕会补上 ~~（基本不可能了）~~
+
+![](https://github.com/dr-chene/CMusic/blob/master/cmusic_home.gif)
+![](https://github.com/dr-chene/CMusic/blob/master/cmusic_login.gif)
+![](https://github.com/dr-chene/CMusic/blob/master/cmusic_playlist.gif)
+![](https://github.com/dr-chene/CMusic/blob/master/cmusic_profile.gif)
