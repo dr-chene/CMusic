@@ -20,9 +20,7 @@ import com.example.cmusic.view.main.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.Ar;
 import bean.Songs;
-import bean.TrackId;
 import bean.Tracks;
 
 public class PlayListActivity extends AppCompatActivity {
@@ -62,29 +60,22 @@ public class PlayListActivity extends AppCompatActivity {
         nickname.setText(mNickname);
         songs = new Songs();
         CHttp http = CHttp.getChHttp();
-        Request request = new Request(MainActivity.GET_PLAYLIST_DETAIL);
-        RequestBody body = new RequestBody().add("id",""+id);
-        request.post(body);
-        Log.d(TAG, "getSongs: 开始请求数据");
+        Request request = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+id);
         http.newCall(request, new CallBack() {
             @Override
             public void onSuccess(String str) {
-                Log.d(TAG, "onSuccess: data get");
                 List<Class> clazz = new ArrayList<>();
                 clazz.add(Tracks.class);
-                clazz.add(Ar.class);
-                clazz.add(TrackId.class);
                 CJson json = new CJson(clazz);
                 Log.d("TAG3", "run: "+ str);
                 songs = json.formJson(str,Songs.class);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d("TAG3", "run: "+(songs == null));
-                        String track = songs.getPlaylist().getTracks().size()+" Tracks - "+songs.getPlaylist().getTrackCount();
-                        tracks.setText(track);
-                    }
-                });
+//                handler.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        String track = songs.getPlaylist().getTracks().size()+" Tracks - "+songs.getPlaylist().getTrackCount();
+//                        tracks.setText(track);
+//                    }
+//                });
             }
 
             @Override
@@ -92,5 +83,6 @@ public class PlayListActivity extends AppCompatActivity {
                     e.printStackTrace();
             }
         });
+        http.execute();
     }
 }

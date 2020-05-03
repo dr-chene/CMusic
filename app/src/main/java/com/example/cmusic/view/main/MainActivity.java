@@ -39,6 +39,7 @@ MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInte
     private static String baseUrl = "http://47.99.165.194";
     public static final String GET_RECOMMEND_ALBUM = baseUrl + "/top/playlist";
     public static final String GET_PLAYLIST_DETAIL = baseUrl + "/playlist/detail";
+    public static final String GET_MY_SONG_LIST = baseUrl + "/user/playlist";
 
     private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override

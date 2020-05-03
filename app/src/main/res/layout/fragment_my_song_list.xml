@@ -10,6 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_song_list_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
@@ -19,7 +20,7 @@
         android:layout_height="43dp">
 
         <ImageView
-            android:id="@+id/home_play_iv"
+            android:id="@+id/my_song_list_play_iv"
             android:layout_width="5dp"
             android:layout_height="5dp"
             android:src="@mipmap/playblue"

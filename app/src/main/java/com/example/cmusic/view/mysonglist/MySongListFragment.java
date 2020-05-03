@@ -5,12 +5,30 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.chttp.CHttp;
+import com.example.chttp.CallBack;
+import com.example.chttp.Request;
+import com.example.cjson.CJson;
 import com.example.cmusic.R;
+import com.example.cmusic.view.main.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.Songs;
+import bean.Tracks;
+import bean.mysonglist.MySongList;
+import bean.mysonglist.PlayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +49,11 @@ public class MySongListFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private RecyclerView recyclerView;
+    private MySongList songList;
+    private Songs songs;
+    private Handler handler = new Handler();
 
     public MySongListFragment() {
         // Required empty public constructor
@@ -67,7 +90,9 @@ public class MySongListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_song_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_song_list, container, false);
+        initView(view);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -108,4 +133,63 @@ public class MySongListFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private void initView(View view) {
+        recyclerView = view.findViewById(R.id.my_song_list_rv);
+        getSongList();
+    }
+
+    private void getSongList() {
+        final CHttp http = CHttp.getChHttp();
+        Request request = new Request(MainActivity.GET_MY_SONG_LIST+"?uid=1351234965");
+        http.newCall(request, new CallBack() {
+            @Override
+            public void onSuccess(String str) {
+                List<Class> clazz = new ArrayList<>();
+                clazz.add(PlayList.class);
+                CJson json = new CJson(clazz);
+                songList = json.formJson(str,MySongList.class);
+                Log.d("TAGMYSONG", "onSuccess: "+(songList == null));
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Request songRequest = new Request(MainActivity.GET_PLAYLIST_DETAIL+"?id="+songList.getPlaylist().get(0).getId());
+                        http.newCall(songRequest, new CallBack() {
+                            @Override
+                            public void onSuccess(String str) {
+                                List<Class> classes = new ArrayList<>();
+                                classes.add(Tracks.class);
+                                CJson songJson = new CJson(classes);
+                                songs = songJson.formJson(str,Songs.class);
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Log.d("TAG2", "run: "+(songs == null));
+                                        Log.d("TAG2", "run: "+songs.getPlaylist().getTracks().get(0).getName());
+                                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                                        recyclerView.setLayoutManager(layoutManager);
+                                        MySongListAdapter adapter = new MySongListAdapter(getContext(),songs);
+                                        recyclerView.setAdapter(adapter);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailed(Exception e) {
+
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
+        http.execute();
+    }
+
 }

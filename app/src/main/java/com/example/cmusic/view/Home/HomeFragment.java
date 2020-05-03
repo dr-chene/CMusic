@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,6 +54,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private Albums albums;
     private HomeRecommendAlbumAdapter adapter;
+    private Handler handler = new Handler();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -139,14 +141,9 @@ public class HomeFragment extends Fragment {
    private void initView(View view ){
         recyclerView = view.findViewById(R.id.home_recommend_rv);
         getAlbums();
-       GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
-       recyclerView.setLayoutManager(layoutManager);
-       adapter = new HomeRecommendAlbumAdapter(getContext(),albums,mListener);
-       recyclerView.setAdapter(adapter);
-       adapter.notifyDataSetChanged();
    }
    private void getAlbums() {
-       CHttp http = CHttp.getChHttp();
+       final CHttp http = CHttp.getChHttp();
        Request request = new Request(MainActivity.GET_RECOMMEND_ALBUM);
        http.newCall(request, new CallBack() {
            @Override
@@ -156,6 +153,16 @@ public class HomeFragment extends Fragment {
                clazz.add(String.class);
                CJson json = new CJson(clazz);
                albums = json.formJson(str,Albums.class);
+               handler.post(new Runnable() {
+                   @Override
+                   public void run() {
+                       GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
+                       recyclerView.setLayoutManager(layoutManager);
+                       adapter = new HomeRecommendAlbumAdapter(getContext(),albums,mListener);
+                       recyclerView.setAdapter(adapter);
+                       adapter.notifyDataSetChanged();
+                   }
+               });
            }
 
            @Override

@@ -7,6 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/playlist_order_number_tv"
             android:layout_marginTop="13dp"
             android:layout_marginStart="17dp"
             android:text="1"
@@ -16,6 +17,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/playlist_song_name_tv"
             android:layout_marginStart="13dp"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="13dp"
@@ -26,6 +28,7 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 <TextView
+    android:id="@+id/playlist_song_time_tv"
     android:text="04:45"
     android:textColor="#ffb7c4cb"
     android:textSize="12sp"

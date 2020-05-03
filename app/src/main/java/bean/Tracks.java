@@ -8,11 +8,7 @@ import java.util.List;
 public class Tracks {
     private String name;
     private long id;
-    private int pst;
-    private int t;
-    private List<Ar> ar;
     private int fee;
-    private Al al;
     private int dt;
 
     public String getName() {
@@ -31,44 +27,12 @@ public class Tracks {
         this.id = id;
     }
 
-    public int getPst() {
-        return pst;
-    }
-
-    public void setPst(int pst) {
-        this.pst = pst;
-    }
-
-    public int getT() {
-        return t;
-    }
-
-    public void setT(int t) {
-        this.t = t;
-    }
-
-    public List<Ar> getAr() {
-        return ar;
-    }
-
-    public void setAr(List<Ar> ar) {
-        this.ar = ar;
-    }
-
     public int getFee() {
         return fee;
     }
 
     public void setFee(int fee) {
         this.fee = fee;
-    }
-
-    public Al getAl() {
-        return al;
-    }
-
-    public void setAl(Al al) {
-        this.al = al;
     }
 
     public int getDt() {
