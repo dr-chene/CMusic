@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmusic.R;
+import com.example.cmusic.view.main.MainActivity;
 
 import java.util.List;
 
@@ -38,14 +39,16 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.orderNumber.setText(""+(position+1));
         holder.songName.setText(tracks.get(position).getName());
         holder.songTime.setText(getTime(tracks.get(position).getDt()));
         holder.song.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "play song", Toast.LENGTH_SHORT).show();
+                MainActivity.changeIds(context,tracks.get(position).getId());
+                Toast.makeText(context, "假装开始播放歌曲"+tracks.get(position).getName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "play", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -53,8 +53,8 @@ public class HomeRecommendAlbumAdapter extends RecyclerView.Adapter<HomeRecommen
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Album album = albums.getPlaylists().get(position);
-        Bitmap bitmap = getURLimage(album.getCoverImgUrl());
-        holder.homeRecommendCoverImg.setImageBitmap(bitmap);
+//        Bitmap bitmap = getURLimage(album.getCoverImgUrl());
+//        holder.homeRecommendCoverImg.setImageBitmap(bitmap);
         holder.homeRecommendCoverImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

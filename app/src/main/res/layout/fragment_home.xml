@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="33dp"/>
     <androidx.viewpager.widget.ViewPager
+        android:background="@drawable/home_viewpager_bg"
         android:layout_width="match_parent"
         android:layout_height="140dp"/>
     <LinearLayout

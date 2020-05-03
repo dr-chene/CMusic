@@ -6,7 +6,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Album;
+import database.MySQLiteOpenHelper;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,
 MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInteractionListener{
@@ -35,12 +38,14 @@ MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInte
 
     private List<Fragment> mFragments;
     private FragmentPagerAdapter mAdapter;
+    public static long ids = 0;
 
     private static String baseUrl = "http://47.99.165.194";
     public static final String GET_RECOMMEND_ALBUM = baseUrl + "/top/playlist";
     public static final String GET_PLAYLIST_DETAIL = baseUrl + "/playlist/detail";
     public static final String GET_MY_SONG_LIST = baseUrl + "/user/playlist";
     public static final String GET_USER_DETAIL = baseUrl + "/user/detail";
+    public static final String GET_SONG_DETAIL = baseUrl + "/song/detail";
 
     private ViewPager.OnPageChangeListener mPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -85,6 +90,7 @@ MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInte
     }
 
     private void initView() {
+        ids = MySQLiteOpenHelper.readSongId(this);
         mViewPager = findViewById(R.id.main_activity_viewpager);
         mTabRadioGroup = findViewById(R.id.main_activity_radio_group);
 
@@ -98,6 +104,11 @@ MyCenterFragment.OnFragmentInteractionListener,MySongListFragment.OnFragmentInte
 
         mViewPager.addOnPageChangeListener(mPageChangeListener);
         mTabRadioGroup.setOnCheckedChangeListener(mOnCheckedChangeListener);
+    }
+
+    public static void changeIds(Context context,long id) {
+        ids = id;
+       MySQLiteOpenHelper.changeId(context,id);
     }
 
     @Override
