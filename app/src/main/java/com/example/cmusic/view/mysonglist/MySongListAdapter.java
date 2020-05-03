@@ -12,11 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmusic.R;
 
-import java.util.List;
-
-import bean.SongList;
-import bean.Songs;
-import bean.Tracks;
 import bean.mysonglist.MySongList;
 import bean.mysonglist.PlayList;
 
@@ -36,7 +31,7 @@ public class MySongListAdapter extends RecyclerView.Adapter<MySongListAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_my_song_list_rv_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.my_song_list_rv_item,parent,false);
         return new ViewHolder(view);
     }
 

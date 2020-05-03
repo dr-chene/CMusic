@@ -1,6 +1,7 @@
 package com.example.cmusic.view.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.chttp.CHttp;
@@ -23,6 +25,7 @@ import com.example.chttp.RequestBody;
 import com.example.cjson.CJson;
 import com.example.cmusic.R;
 import com.example.cmusic.view.main.MainActivity;
+import com.example.cmusic.view.play.PlayActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +58,8 @@ public class HomeFragment extends Fragment {
     private Albums albums;
     private HomeRecommendAlbumAdapter adapter;
     private Handler handler = new Handler();
+    private ImageView play;
+    private ImageView turn;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -140,9 +145,30 @@ public class HomeFragment extends Fragment {
 
    private void initView(View view ){
         recyclerView = view.findViewById(R.id.home_recommend_rv);
+        play = view.findViewById(R.id.home_play_iv);
+        turn = view.findViewById(R.id.fragment_home_turn_to_play_iv);
         getAlbums();
+        setClick();
    }
-   private void getAlbums() {
+
+    private void setClick() {
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //play music
+                Toast.makeText(getContext(),"暂未实现逻辑",Toast.LENGTH_SHORT).show();
+            }
+        });
+        turn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PlayActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+    }
+
+    private void getAlbums() {
        final CHttp http = CHttp.getChHttp();
        Request request = new Request(MainActivity.GET_RECOMMEND_ALBUM);
        http.newCall(request, new CallBack() {

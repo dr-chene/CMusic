@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".view.playlist.PlayListActivity"
     android:orientation="vertical">
+    <Toolbar
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+        <TextView
+            android:text="Playlist"
+            android:textColor="#ff1c252a"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </Toolbar>
+    <View
+        android:background="#80758692"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,8 +30,8 @@
         <ImageView
             android:id="@+id/playlist_activity_cover_img_iv"
             android:src="@mipmap/app_icon"
-            android:layout_width="74dp"
-            android:layout_height="74dp"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_margin="16dp"/>
         <LinearLayout
             android:layout_width="0dp"
@@ -29,7 +45,8 @@
                 android:layout_weight="1"
                 android:text="Ride the Lightning"
                 android:textColor="#ff1c252a"
-                android:textSize="15sp"
+                android:lines="2"
+                android:textSize="16sp"
                 android:gravity="bottom"/>
             <TextView
                 android:id="@+id/playlist_activity_creator_name_tv"
@@ -44,8 +61,8 @@
                 android:layout_weight="3">
                 <ImageView
                     android:src="@mipmap/playlist_playlist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="15dp"/>
                 <TextView
@@ -54,13 +71,13 @@
                     android:layout_height="wrap_content"
                     android:text="8 Tracks - 1984"
                     android:textColor="#ff758692"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="15dp"/>
                 <ImageView
                     android:src="@mipmap/dots"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>
@@ -74,16 +91,16 @@
             android:layout_height="wrap_content"
             android:text="Songs"
             android:textColor="#ff1c252a"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"/>
 
         <ImageView
             android:id="@+id/playlist_activity_play_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_gravity="center_vertical|end"
             android:src="@mipmap/playlist_shaffle" />
     </FrameLayout>

@@ -5,9 +5,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".view.Home.HomeFragment">
+    tools:context=".view.Home.HomeFragment"
+    android:fitsSystemWindows="true">
 
     <!-- TODO: Update blank fragment layout -->
+    <Toolbar
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="36dp">
+        <TextView
+            android:text="Home"
+            android:textColor="#ff1c252a"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </Toolbar>
+    <View
+        android:background="#80758692"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <TextView
         android:text="New Albums"
         android:paddingStart="17dp"
@@ -35,7 +52,7 @@
         <TextView
             android:text="See All"
             android:textColor="#ff0091ea"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="end"
             android:layout_marginEnd="17dp"
@@ -52,16 +69,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="43dp">
+        android:layout_height="50dp">
 
         <ImageView
             android:id="@+id/home_play_iv"
-            android:layout_width="5dp"
-            android:layout_height="5dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="3dp"
+
             android:src="@mipmap/playblue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.06"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintHorizontal_bias="0.7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,20 +91,20 @@
             android:layout_height="wrap_content"
             android:text="For Whom the Bell Tolls"
             android:textColor="#ff1c252a"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.23" />
+            app:layout_constraintVertical_bias="0.2" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Metallica - Ride the Lightning"
             android:textColor="#ff758692"
-            android:textSize="7sp"
+            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -92,9 +112,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4"
             app:layout_constraintVertical_bias="0.0" />
         <ImageView
+            android:id="@+id/fragment_home_turn_to_play_iv"
             android:src="@mipmap/dots"
-            android:layout_width="15.33dp"
-            android:layout_height="3.33dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.87"
